@@ -24,25 +24,21 @@ export default {
             }
         })
     },
+
     uploadImages(images, token) {
-        const promise = Array.from(images).map(image => {
-            const formData = new FormData()
-            formData.append('image', image)
-
-
-            return axios.post(`${Root_url}/3/images`, formData, {
+        const promises = Array.from(images).map(image => {
+            const formData = new FormData();
+            formData.append('image', image);            
+            return axios.post(`${Root_url}/3/image`, formData, {
                 headers:{
-                    // "Access-Control-Allow-Origin" : "*",
-                    // "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
-                    // "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
                     Authorization: `Bearer ${token}`
                 }
-            })
-        })
+            });
+        });
 
-        return Promise.all(promise)
+        return Promise.all(promises);
     }
-}
+};
 
 /* 
 http://localhost:8080/oauth2/callback#

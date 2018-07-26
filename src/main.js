@@ -20,6 +20,6 @@ export const router = new VueRouter({
 
 new Vue({
     router,
-    store: store,
+    store,
     render: h =>h(App)
 }).$mount('#app');
